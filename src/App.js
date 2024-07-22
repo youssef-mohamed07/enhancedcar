@@ -11,19 +11,16 @@ import ContactUs from './components/ContactUs';
 function App() {
   return (
     <>
-    <Header/>
-    <Hero/>
-    <CarList/>
-    <CarDetail/>
-    <AboutUs/>
-    <ContactUs/>
-
-
-    <Footer/>
-    
+      <Header />
+      <Hero id='hero'/>
+      <CarList id='car'/>
+      <CarDetail id='car-details'/>
+      <AboutUs id='about-us'/>
+      <ContactUs id='contact-us'/>
+      <Footer/>
     </>
-  
   );
 }
+
 
 export default App;

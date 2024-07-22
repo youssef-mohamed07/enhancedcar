@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes, FaGlobe } from 'react-icons/fa';
+import { Link } from 'react-scroll';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [language, setLanguage] = useState('EN');
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const toggleLanguage = () => setLanguage(language === 'EN' ? 'ES' : 'EN');
+  const toggleLanguage = () => setLanguage(language === 'EN' ? 'AR' : 'EN');
 
   return (
     <header className="bg-black text-white shadow-lg">
@@ -25,15 +26,15 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
             {['Car Details', 'Car List', 'About Us', 'Contact Us'].map((item) => (
-              <motion.a
+              <Link
                 key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
-                className="hover:text-yellow-300 transition duration-300"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                to={item.toLowerCase().replace(' ', '-')}
+                smooth={true}
+                duration={500}
+                className="hover:text-yellow-300 transition duration-300 cursor-pointer"
               >
                 {item}
-              </motion.a>
+              </Link>
             ))}
           </nav>
 
@@ -82,13 +83,15 @@ const Header = () => {
         <div className="container mx-auto px-4 py-3">
           <nav className="flex flex-col space-y-3">
             {['Car Details', 'Car List', 'About Us', 'Contact Us'].map((item) => (
-              <a
+              <Link
                 key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
-                className="hover:text-yellow-300 transition duration-300"
+                to={item.toLowerCase().replace(' ', '-')}
+                smooth={true}
+                duration={500}
+                className="hover:text-yellow-300 transition duration-300 cursor-pointer"
               >
                 {item}
-              </a>
+              </Link>
             ))}
             <button className="bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition duration-300">
               Sign Up
