@@ -5,6 +5,7 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4 overflow-hidden">
       <motion.section 
+      id='about'
         className="bg-white rounded-3xl shadow-2xl p-8 max-w-4xl w-full relative"
         initial={{ opacity: 0, rotateY: -90 }}
         animate={{ opacity: 1, rotateY: 0 }}

@@ -12,11 +12,11 @@ function App() {
   return (
     <>
       <Header />
-      <Hero id='hero'/>
-      <CarList id='car'/>
-      <CarDetail id='car-details'/>
-      <AboutUs id='about-us'/>
-      <ContactUs id='contact-us'/>
+      <Hero />
+      <CarList/>
+      <CarDetail />
+      <AboutUs />
+      <ContactUs />
       <Footer/>
     </>
   );
