@@ -107,7 +107,7 @@ const CarList = () => {
       id: 2,
       name: 'Ford Mustang Mach-E',
       image: 'Ford Mustang Mach-E.avif',
-      description: 'All-electric SUV with Mustang-inspiyellow design and cutting-edge technology.',
+      description: 'All-electric SUV with Mustang-inspired design and cutting-edge technology.',
       price: '$45,995',
       range: '314 miles',
       acceleration: '0-60 mph in 3.5s',
