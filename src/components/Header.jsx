@@ -14,14 +14,18 @@ const Header = () => {
     <header className="bg-black text-white shadow-lg">
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl font-bold"
+            className="flex items-center space-x-4"
           >
-            Car Sales and Rental
-          </motion.h1>
+            <img src="auth.png" alt="Athar Motor Company Logo" className="h-12 w-auto" />
+            <div>
+              <h1 className="text-2xl font-bold text-yellow-600">Athar Motor Company</h1>
+              <p className="text-sm text-gray-400">شركة اثر موتور</p>
+            </div>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
@@ -31,7 +35,7 @@ const Header = () => {
                 to={item.toLowerCase().replace(' ', '-')}
                 smooth={true}
                 duration={500}
-                className="hover:text-yellow-300 transition duration-300 cursor-pointer"
+                className="hover:text-yellow-600 transition duration-300 cursor-pointer"
               >
                 {item}
               </Link>
@@ -43,14 +47,14 @@ const Header = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition duration-300"
+              className="bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-yellow-700 transition duration-300"
             >
               Sign Up
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent border-2 border-white px-4 py-2 rounded-full font-semibold hover:bg-white hover:text-blue-500 transition duration-300"
+              className="bg-transparent border-2 border-yellow-600 text-yellow-600 px-4 py-2 rounded-full font-semibold hover:bg-yellow-600 hover:text-white transition duration-300"
             >
               Login
             </motion.button>
@@ -58,7 +62,7 @@ const Header = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleLanguage}
-              className="text-xl"
+              className="text-xl text-yellow-600"
             >
               <FaGlobe /> {language}
             </motion.button>
@@ -66,7 +70,7 @@ const Header = () => {
 
           {/* Mobile Menu Toggle */}
           <div className="md:hidden">
-            <button onClick={toggleMenu} className="text-2xl focus:outline-none">
+            <button onClick={toggleMenu} className="text-2xl focus:outline-none text-yellow-600">
               {isMenuOpen ? <FaTimes /> : <FaBars />}
             </button>
           </div>
@@ -88,18 +92,18 @@ const Header = () => {
                 to={item.toLowerCase().replace(' ', '-')}
                 smooth={true}
                 duration={500}
-                className="hover:text-yellow-300 transition duration-300 cursor-pointer"
+                className="hover:text-yellow-600 transition duration-300 cursor-pointer"
               >
                 {item}
               </Link>
             ))}
-            <button className="bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition duration-300">
+            <button className="bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-yellow-700 transition duration-300">
               Sign Up
             </button>
-            <button className="bg-transparent border-2 border-white px-4 py-2 rounded-full font-semibold hover:bg-white hover:text-blue-500 transition duration-300">
+            <button className="bg-transparent border-2 border-yellow-600 text-yellow-600 px-4 py-2 rounded-full font-semibold hover:bg-yellow-600 hover:text-white transition duration-300">
               Login
             </button>
-            <button onClick={toggleLanguage} className="flex items-center space-x-2">
+            <button onClick={toggleLanguage} className="flex items-center space-x-2 text-yellow-600">
               <FaGlobe /> <span>{language}</span>
             </button>
           </nav>

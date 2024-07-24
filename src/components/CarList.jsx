@@ -1,5 +1,96 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { FaWhatsapp } from 'react-icons/fa';
+
+const CarCard = ({ car, index }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+
+  const [showDetails, setShowDetails] = useState(false);
+
+  return (
+    <motion.div
+      ref={ref}
+      className="bg-gradient-to-br from-yellow-300 to-yellow-600 rounded-2xl shadow-2xl overflow-hidden transition-transform duration-500 hover:shadow-3xl transform hover:scale-105"
+      initial={{ opacity: 0, rotateY: 90 }}
+      animate={inView ? { opacity: 1, rotateY: 0 } : {}}
+      transition={{ duration: 0.8, delay: index * 0.2, type: 'spring', damping: 12 }}
+      whileHover={{ rotateY: 10, z: 50 }}
+    >
+      <div className="relative">
+        <img src={car.image} alt={car.name} className="w-full h-56 object-cover" />
+        <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+          <motion.span 
+            className="text-white text-2xl font-bold"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 10 }}
+          >
+            {car.name}
+          </motion.span>
+        </div>
+      </div>
+      <div className="p-6 bg-black text-yellow-600">
+        <h3 className="text-2xl font-bold mb-3">{car.name}</h3>
+        <p className="text-yellow-200 mb-4">{car.description}</p>
+        <div className="flex justify-between items-center mb-4">
+          <motion.span 
+            className="text-3xl font-extrabold"
+            whileHover={{ scale: 1.2, rotate: -3 }}
+          >
+            {car.price}
+          </motion.span>
+          <motion.span 
+            className="bg-yellow-600 text-black px-4 py-2 rounded-full text-sm font-bold"
+            whileHover={{ scale: 1.1, rotate: 3 }}
+          >
+            {car.range}
+          </motion.span>
+        </div>
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-sm text-yellow-200">0-60 mph</span>
+          <motion.span 
+            className="text-sm font-bold"
+            whileHover={{ scale: 1.1, x: -5 }}
+          >
+            {car.acceleration}
+          </motion.span>
+        </div>
+        <motion.button
+          className="w-full bg-yellow-600 text-black font-bold py-2 px-4 rounded-full hover:bg-yellow-300 transition-colors duration-300"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setShowDetails(!showDetails)}
+        >
+          {showDetails ? 'Hide Details' : 'Buy Now'}
+        </motion.button>
+        {showDetails && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="mt-4 text-yellow-200"
+          >
+            <p className="mb-2">Price: {car.price}</p>
+            <a
+              href={`https://wa.me/1234567890?text=I'm interested in buying the ${car.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center bg-green-500 text-white py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-300"
+            >
+              <FaWhatsapp className="mr-2" />
+              Contact via WhatsApp
+            </a>
+          </motion.div>
+        )}
+      </div>
+    </motion.div>
+  );
+};
 
 const CarList = () => {
   const cars = [
@@ -16,7 +107,7 @@ const CarList = () => {
       id: 2,
       name: 'Ford Mustang Mach-E',
       image: 'Ford Mustang Mach-E.avif',
-      description: 'All-electric SUV with Mustang-inspired design and cutting-edge technology.',
+      description: 'All-electric SUV with Mustang-inspiyellow design and cutting-edge technology.',
       price: '$45,995',
       range: '314 miles',
       acceleration: '0-60 mph in 3.5s',
@@ -60,40 +151,18 @@ const CarList = () => {
   ];
 
   return (
-    <section className="container mx-auto p-6 bg-gray-100">
-      <motion.h2 
-        className="text-4xl font-bold mb-8 text-center text-black"
-        initial={{ opacity: 0, y: -50 }}
+    <section className="container mx-auto p-6 bg-white">
+      <motion.h2
+        className="text-6xl font-extrabold mb-12 text-center text-yellow-600 drop-shadow-lg"
+        initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.8, type: 'spring', bounce: 0.5 }}
       >
-        Available Electric Cars
+        Electrifying Car Collection
       </motion.h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {cars.map((car, index) => (
-          <motion.div 
-            key={car.id} 
-            className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <img src={car.image} alt={car.name} className="w-full h-48 object-cover" />
-            <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2 text-gray-800">{car.name}</h3>
-              <p className="text-gray-600 mb-4">{car.description}</p>
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-2xl font-bold text-green-600">{car.price}</span>
-                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
-                  {car.range}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-500">0-60 mph</span>
-                <span className="text-sm font-semibold text-gray-700">{car.acceleration}</span>
-              </div>
-            </div>
-          </motion.div>
+          <CarCard key={car.id} car={car} index={index} />
         ))}
       </div>
     </section>
