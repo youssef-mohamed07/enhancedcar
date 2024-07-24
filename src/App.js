@@ -1,26 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Hero from './components/Hero';
-import CarList from './components/CarList';
-import CarDetail from './components/CarDetail';
-import AboutUs from './components/About';
-import ContactUs from './components/ContactUs';
+import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+import { Route, Routes } from "react-router-dom";
+import Home from "./screens/Home";
+import SignUp from "./screens/auth/SignUp";
+import Login from "./screens/auth/Login";
 
 function App() {
   return (
     <>
       <Header />
-      <Hero />
-      <CarList/>
-      <CarDetail />
-      <AboutUs />
-      <ContactUs />
-      <Footer/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      <Footer />
     </>
   );
 }
-
 
 export default App;

@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaBars, FaTimes, FaGlobe } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-scroll";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [language, setLanguage] = useState(i18n.language);
 
@@ -56,6 +59,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-yellow-700 transition duration-300"
+              onClick={() => navigate("sign-up")}
             >
               {t("Sign Up")}
             </motion.button>
@@ -63,6 +67,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-transparent border-2 border-yellow-600 text-yellow-600 px-4 py-2 rounded-full font-semibold hover:bg-yellow-600 hover:text-white transition duration-300"
+              onClick={() => navigate("login")}
             >
               {t("Login")}
             </motion.button>
