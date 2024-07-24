@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { FaBars, FaTimes, FaGlobe } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
 import { Link } from "react-scroll";
 
 const Header = () => {
@@ -17,9 +16,16 @@ const Header = () => {
   const toggleLanguage = () => {
     const newLanguage = language === "en" ? "ar" : "en";
     setLanguage(newLanguage);
-
     i18n.changeLanguage(newLanguage);
   };
+
+  const navItems = [
+    { name: "Car List", id: "car-list" },
+    { name: "Car Details", id: "car-details" },
+   
+    { name: "About Us", id: "about-us" },
+    { name: "Contact Us", id: "contact-us" },
+  ];
 
   return (
     <header className="bg-black text-white shadow-lg">
@@ -31,7 +37,9 @@ const Header = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center space-x-4"
           >
-            <img src="auth.png" alt="Athar Motor Company Logo" className="h-12 w-auto" />
+            <a href="/">
+              <img src="auth.png" alt="Athar Motor Company Logo" className="h-12 w-auto" />
+            </a>
             <div>
               <h1 className="text-2xl font-bold text-yellow-600">{t("Athar Motor Company")}</h1>
               <p className="text-sm text-gray-400">{t("Athar Motor Company")}</p>
@@ -40,15 +48,16 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
-            {["Car Details", "Car List", "About Us", "Contact Us"].map((item) => (
+            {navItems.map((item) => (
               <Link
-                key={item}
-                to={item.toLowerCase().replace(" ", "-")}
+                key={item.id}
+                to={item.id}
                 smooth={true}
                 duration={500}
+                offset={-80} // Adjust this value based on your header height
                 className="hover:text-yellow-600 transition duration-300 cursor-pointer"
               >
-                {t(item)}
+                {t(item.name)}
               </Link>
             ))}
           </nav>
@@ -99,25 +108,42 @@ const Header = () => {
       >
         <div className="container mx-auto px-4 py-3">
           <nav className="flex flex-col space-y-3">
-            {["Car Details", "Car List", "About Us", "Contact Us"].map((item) => (
+            {navItems.map((item) => (
               <Link
-                key={item}
-                to={item.toLowerCase().replace(" ", "-")}
+                key={item.id}
+                to={item.id}
                 smooth={true}
                 duration={500}
+                offset={-80} // Adjust this value based on your header height
                 className="hover:text-yellow-600 transition duration-300 cursor-pointer"
+                onClick={() => setIsMenuOpen(false)} // Close menu after clicking
               >
-                {t(item)}
+                {t(item.name)}
               </Link>
             ))}
-            <button className="bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-yellow-700 transition duration-300">
+            <button
+              className="bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-yellow-700 transition duration-300"
+              onClick={() => {
+                navigate("sign-up");
+                setIsMenuOpen(false);
+              }}
+            >
               {t("Sign Up")}
             </button>
-            <button className="bg-transparent border-2 border-yellow-600 text-yellow-600 px-4 py-2 rounded-full font-semibold hover:bg-yellow-600 hover:text-white transition duration-300">
+            <button
+              className="bg-transparent border-2 border-yellow-600 text-yellow-600 px-4 py-2 rounded-full font-semibold hover:bg-yellow-600 hover:text-white transition duration-300"
+              onClick={() => {
+                navigate("login");
+                setIsMenuOpen(false);
+              }}
+            >
               {t("Login")}
             </button>
             <button
-              onClick={toggleLanguage}
+              onClick={() => {
+                toggleLanguage();
+                setIsMenuOpen(false);
+              }}
               className="flex items-center space-x-2 text-yellow-600"
             >
               <FaGlobe /> <span>{language}</span>

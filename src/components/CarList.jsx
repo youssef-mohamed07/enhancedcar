@@ -1,23 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaBolt, FaRoad, FaTachometerAlt, FaStar } from 'react-icons/fa';
 
-const CarCard = ({ car, index }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true,
-  });
-
+const CarCard = ({ car }) => {
   const [showDetails, setShowDetails] = useState(false);
 
   return (
     <motion.div
-      ref={ref}
+      id="car-list"
       className="bg-gradient-to-br from-yellow-300 to-yellow-600 rounded-2xl shadow-2xl overflow-hidden transition-transform duration-500 hover:shadow-3xl transform hover:scale-105"
-      initial={{ opacity: 0, rotateY: 90 }}
-      animate={inView ? { opacity: 1, rotateY: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.2, type: 'spring', damping: 12 }}
       whileHover={{ rotateY: 10, z: 50 }}
     >
       <div className="relative">
@@ -38,20 +29,22 @@ const CarCard = ({ car, index }) => {
         <p className="text-yellow-200 mb-4">{car.description}</p>
         <div className="flex justify-between items-center mb-4">
           <motion.span 
-            className="text-3xl font-extrabold"
+            className="text-3xl font-extrabold flex items-center"
             whileHover={{ scale: 1.2, rotate: -3 }}
           >
-            {car.price}
+            <FaBolt className="mr-2" /> {car.price}
           </motion.span>
           <motion.span 
-            className="bg-yellow-600 text-black px-4 py-2 rounded-full text-sm font-bold"
+            className="bg-yellow-600 text-black px-4 py-2 rounded-full text-sm font-bold flex items-center"
             whileHover={{ scale: 1.1, rotate: 3 }}
           >
-            {car.range}
+            <FaRoad className="mr-2" /> {car.range}
           </motion.span>
         </div>
         <div className="flex items-center justify-between mb-4">
-          <span className="text-sm text-yellow-200">0-60 mph</span>
+          <span className="text-sm text-yellow-200 flex items-center">
+            <FaTachometerAlt className="mr-2" /> 0-60 mph
+          </span>
           <motion.span 
             className="text-sm font-bold"
             whileHover={{ scale: 1.1, x: -5 }}
@@ -60,12 +53,12 @@ const CarCard = ({ car, index }) => {
           </motion.span>
         </div>
         <motion.button
-          className="w-full bg-yellow-600 text-black font-bold py-2 px-4 rounded-full hover:bg-yellow-300 transition-colors duration-300"
+          className="w-full bg-yellow-600 text-black font-bold py-2 px-4 rounded-full hover:bg-yellow-300 transition-colors duration-300 flex items-center justify-center"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setShowDetails(!showDetails)}
         >
-          {showDetails ? 'Hide Details' : 'Buy Now'}
+          <FaStar className="mr-2" /> {showDetails ? 'Hide Details' : 'Buy Now'}
         </motion.button>
         {showDetails && (
           <motion.div
@@ -76,6 +69,7 @@ const CarCard = ({ car, index }) => {
             className="mt-4 text-yellow-200"
           >
             <p className="mb-2">Price: {car.price}</p>
+            <p className="mb-2">Recommendation: {car.recommendation}</p>
             <a
               href={`https://wa.me/1234567890?text=I'm interested in buying the ${car.name}`}
               target="_blank"
@@ -102,6 +96,7 @@ const CarList = () => {
       price: '$79,990',
       range: '405 miles',
       acceleration: '0-60 mph in 3.1s',
+      recommendation: 'Highly recommended for luxury and performance.'
     },
     {
       id: 2,
@@ -111,6 +106,7 @@ const CarList = () => {
       price: '$45,995',
       range: '314 miles',
       acceleration: '0-60 mph in 3.5s',
+      recommendation: 'Great balance of style and technology.'
     },
     {
       id: 3,
@@ -120,6 +116,7 @@ const CarList = () => {
       price: '$82,700',
       range: '227 miles',
       acceleration: '0-60 mph in 2.6s',
+      recommendation: 'Perfect for sports car enthusiasts.'
     },
     {
       id: 4,
@@ -129,6 +126,7 @@ const CarList = () => {
       price: '$31,995',
       range: '259 miles',
       acceleration: '0-60 mph in 6.5s',
+      recommendation: 'Ideal for budget-conscious buyers.'
     },
     {
       id: 5,
@@ -138,6 +136,7 @@ const CarList = () => {
       price: '$99,900',
       range: '238 miles',
       acceleration: '0-60 mph in 3.1s',
+      recommendation: 'Excellent choice for luxury and performance.'
     },
     {
       id: 6,
@@ -147,6 +146,7 @@ const CarList = () => {
       price: '$67,500',
       range: '314 miles',
       acceleration: '0-60 mph in 3.0s',
+      recommendation: 'Perfect for adventurous drivers.'
     },
   ];
 
@@ -161,8 +161,8 @@ const CarList = () => {
         Electrifying Car Collection
       </motion.h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {cars.map((car, index) => (
-          <CarCard key={car.id} car={car} index={index} />
+        {cars.map((car) => (
+          <CarCard key={car.id} car={car} />
         ))}
       </div>
     </section>

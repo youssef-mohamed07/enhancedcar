@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaLock } from 'react-icons/fa';
+import { FaEnvelope, FaLock, FaGoogle, FaFacebook } from 'react-icons/fa';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -14,21 +14,32 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log('Form submitted:', formData);
   };
 
   return (
-    <div className="bg-black text-white min-h-screen flex items-center justify-center">
+    <div className="bg-gradient-to-br from-black to-gray-900 text-white min-h-screen flex items-center justify-center p-4">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md"
+        className="bg-gray-800 p-8 rounded-2xl shadow-2xl w-full max-w-md relative overflow-hidden"
       >
-        <h2 className="text-3xl font-bold text-yellow-600 mb-6 text-center">Log In</h2>
+        <motion.div
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <h2 className="text-4xl font-bold text-yellow-500 mb-6 text-center">Welcome Back</h2>
+        </motion.div>
+
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="mb-6"
+          >
             <label className="block text-sm font-medium mb-2" htmlFor="email">
               Email
             </label>
@@ -42,13 +53,19 @@ const Login = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full py-2 pl-10 pr-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:border-yellow-600"
+                className="w-full py-3 pl-10 pr-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 transition duration-300"
                 placeholder="johndoe@example.com"
                 required
               />
             </div>
-          </div>
-          <div className="mb-6">
+          </motion.div>
+
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mb-8"
+          >
             <label className="block text-sm font-medium mb-2" htmlFor="password">
               Password
             </label>
@@ -62,27 +79,61 @@ const Login = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full py-2 pl-10 pr-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:border-yellow-600"
+                className="w-full py-3 pl-10 pr-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 transition duration-300"
                 placeholder="********"
                 required
               />
             </div>
-          </div>
+          </motion.div>
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            className="w-full bg-yellow-600 text-white py-2 px-4 rounded-full font-semibold hover:bg-yellow-700 transition duration-300"
+            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 transition duration-300 shadow-lg"
           >
             Log In
           </motion.button>
         </form>
-        <p className="mt-4 text-center text-sm text-gray-400">
+
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="mt-6"
+        >
+          <p className="text-center text-sm text-gray-400 mb-4">Or continue with</p>
+          <div className="flex justify-center space-x-4">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="bg-red-600 text-white p-2 rounded-full"
+            >
+              <FaGoogle />
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="bg-blue-600 text-white p-2 rounded-full"
+            >
+              <FaFacebook />
+            </motion.button>
+          </div>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="mt-8 text-center text-sm text-gray-400"
+        >
           Don't have an account?{' '}
-          <a href="/signup" className="text-yellow-600 hover:underline">
+          <a href="/signup" className="text-yellow-500 hover:underline font-medium">
             Sign Up
           </a>
-        </p>
+        </motion.p>
+
+        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700"></div>
       </motion.div>
     </div>
   );

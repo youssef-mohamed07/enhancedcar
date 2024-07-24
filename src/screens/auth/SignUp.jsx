@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaUser, FaEnvelope, FaLock, FaPhone } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock, FaPhone, FaGoogle, FaFacebook } from 'react-icons/fa';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -17,135 +17,111 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log('Form submitted:', formData);
   };
 
+  const inputFields = [
+    { name: 'fullName', type: 'text', placeholder: 'John Doe', icon: FaUser, label: 'Full Name' },
+    { name: 'email', type: 'email', placeholder: 'johndoe@example.com', icon: FaEnvelope, label: 'Email' },
+    { name: 'password', type: 'password', placeholder: '********', icon: FaLock, label: 'Password' },
+    { name: 'confirmPassword', type: 'password', placeholder: '********', icon: FaLock, label: 'Confirm Password' },
+    { name: 'phone', type: 'tel', placeholder: '+1 (123) 456-7890', icon: FaPhone, label: 'Phone Number' },
+  ];
+
   return (
-    <div className="bg-black text-white min-h-screen flex items-center justify-center">
+    <div className="bg-gradient-to-br from-black to-gray-900 text-white min-h-screen flex items-center justify-center p-4">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md"
+        className="bg-gray-800 p-8 rounded-2xl shadow-2xl w-full max-w-md relative overflow-hidden"
       >
-        <h2 className="text-3xl font-bold text-yellow-600 mb-6 text-center">Sign Up</h2>
+        <motion.div
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <h2 className="text-4xl font-bold text-yellow-500 mb-6 text-center">Join Us</h2>
+        </motion.div>
+
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="fullName">
-              Full Name
-            </label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-                <FaUser />
-              </span>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                className="w-full py-2 pl-10 pr-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:border-yellow-600"
-                placeholder="John Doe"
-                required
-              />
-            </div>
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="email">
-              Email
-            </label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-                <FaEnvelope />
-              </span>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full py-2 pl-10 pr-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:border-yellow-600"
-                placeholder="johndoe@example.com"
-                required
-              />
-            </div>
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="password">
-              Password
-            </label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-                <FaLock />
-              </span>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full py-2 pl-10 pr-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:border-yellow-600"
-                placeholder="********"
-                required
-              />
-            </div>
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="confirmPassword">
-              Confirm Password
-            </label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-                <FaLock />
-              </span>
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                className="w-full py-2 pl-10 pr-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:border-yellow-600"
-                placeholder="********"
-                required
-              />
-            </div>
-          </div>
-          <div className="mb-6">
-            <label className="block text-sm font-medium mb-2" htmlFor="phone">
-              Phone Number
-            </label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-                <FaPhone />
-              </span>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full py-2 pl-10 pr-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:border-yellow-600"
-                placeholder="+1 (123) 456-7890"
-                required
-              />
-            </div>
-          </div>
+          {inputFields.map((field, index) => (
+            <motion.div
+              key={field.name}
+              initial={{ x: index % 2 === 0 ? -50 : 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+              className="mb-4"
+            >
+              <label className="block text-sm font-medium mb-2" htmlFor={field.name}>
+                {field.label}
+              </label>
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                  <field.icon />
+                </span>
+                <input
+                  type={field.type}
+                  id={field.name}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange}
+                  className="w-full py-3 pl-10 pr-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 transition duration-300"
+                  placeholder={field.placeholder}
+                  required
+                />
+              </div>
+            </motion.div>
+          ))}
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            className="w-full bg-yellow-600 text-white py-2 px-4 rounded-full font-semibold hover:bg-yellow-700 transition duration-300"
+            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 transition duration-300 shadow-lg mt-6"
           >
             Sign Up
           </motion.button>
         </form>
-        <p className="mt-4 text-center text-sm text-gray-400">
+
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="mt-6"
+        >
+          <p className="text-center text-sm text-gray-400 mb-4">Or sign up with</p>
+          <div className="flex justify-center space-x-4">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="bg-red-600 text-white p-2 rounded-full"
+            >
+              <FaGoogle />
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="bg-blue-600 text-white p-2 rounded-full"
+            >
+              <FaFacebook />
+            </motion.button>
+          </div>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+          className="mt-8 text-center text-sm text-gray-400"
+        >
           Already have an account?{' '}
-          <a href="/login" className="text-yellow-600 hover:underline">
+          <a href="/login" className="text-yellow-500 hover:underline font-medium">
             Log in
           </a>
-        </p>
+        </motion.p>
+
+        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700"></div>
       </motion.div>
     </div>
   );
