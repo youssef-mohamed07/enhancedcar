@@ -39,7 +39,7 @@ const Footer = () => {
               animate={{ scale: 1 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <img src="auth.png" alt="Athar Motor Company Logo" className="h-24 mx-auto md:mx-0" />
+              <img src="auth1.png" alt="Athar Motor Company Logo" className="h-24 mx-auto md:mx-0" />
             </motion.div>
             <motion.h2 
               className="text-3xl font-extrabold mb-4 text-yellow-600"

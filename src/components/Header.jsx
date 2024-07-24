@@ -38,7 +38,7 @@ const Header = () => {
             className="flex items-center space-x-4"
           >
             <a href="/">
-              <img src="auth.png" alt="Athar Motor Company Logo" className="h-12 w-auto" />
+              <img src="auth1.png" alt="Athar Motor Company Logo" className="h-12 w-auto" />
             </a>
             <div>
               <h1 className="text-2xl font-bold text-yellow-600">{t("Athar Motor Company")}</h1>
