@@ -1,0 +1,94 @@
+{
+  "Athar Motor Company": "شركة اثر موتور",
+  "Car Details": "تفاصيل السيارة",
+  "Car List": "قائمة السيارات",
+  "About Us": "معلومات عنا",
+  "mph": "ميل/ساعة 60",
+  "miles": "ميل",
+    "find_your_dream_car": "اعثر على سيارتك المثالية",
+    "buy_or_rent_car": "اشترِ أو استأجر السيارة المثالية لاحتياجاتك بسهولة وثقة.",
+    "browse_cars": "تصفح السيارات",
+  "Contact Us": "اتصل بنا",
+  "Sign Up": "سجل",
+  "Login": "تسجيل الدخول",
+  "welcome": "مرحبًا بك في تطبيقنا",
+  "carCard": {
+    "hideDetails": "إخفاء التفاصيل",
+    "buyNow": "اشتر الآن",
+    "price": "السعر",
+    "recommendation": "توصية",
+    "contact": "اتصل عبر WhatsApp",
+    "contactMsg": "أرغب في شراء {{carName}}"
+  },
+  "about_us": "معلومات عنا",
+  "welcome_text": "مرحبًا بك في <span class=\"font-semibold text-black\">بيع وتأجير السيارات</span>، شريكك الموثوق في العثور على السيارة المثالية لاحتياجاتك. مهمتنا هي تقديم تجربة شراء وتأجير سيارات سلسة وممتعة.",
+  "our_team": "فريقنا ملتزم بتقديم:",
+  "thank_you_text": "شكرًا لاختيارك بيع وتأجير السيارات. نتطلع لخدمتك ومساعدتك في العثور على سيارتك المثالية.",
+  "contact_us": "اتصل بنا ",
+  "features": {
+    "wide_range": "نطاق واسع من المركبات",
+    "customer_service": "خدمة عملاء ممتازة",
+    "competitive_pricing": "أسعار تنافسية",
+    "rental_options": "خيارات تأجير مرنة"
+  },
+  "get_in_touch": "تواصل معنا",
+  "contact_description": "يسعدنا سماع أخبارك. فريقنا جاهز للإجابة على جميع أسئلتك.",
+  "email": "البريد الإلكتروني",
+  "phone": "الهاتف",
+  "name": "الاسم",
+  "your_name": "اسمك",
+  "your_email": "بريدك الإلكتروني",
+  "message": "الرسالة",
+  "your_message": "رسالتك",
+  "send_message": "إرسال الرسالة",
+  "contact_email": "contact@carsalesandrental.com",
+  "contact_phone": "+1 (123) 456-7890",
+  "carList": {
+    "title": "مجموعة سيارات كهربائية "
+  },
+  "cars": {
+    "1": {
+      "description": "سيارة تسلا موديل إس",
+      "price": "$79,990",
+      "range": "405 ميل",
+      "acceleration": "0-60 ميل في الساعة في 3.1 ثانية",
+      "recommendation": "موصى به للغاية للفخامة والأداء."
+    },
+    "2": {
+      "description": "سيارة فورد موستانج Mach-E",
+      "price": "$45,995",
+      "range": "314 ميل",
+      "acceleration": "0-60 ميل في الساعة في 3.5 ثانية",
+      "recommendation": "توازن رائع بين الأسلوب والتكنولوجيا."
+    },
+    "3": {
+      "description": "سيارة بورش تايكان",
+      "price": "$82,700",
+      "range": "227 ميل",
+      "acceleration": "0-60 ميل في الساعة في 2.6 ثانية",
+      "recommendation": "مثالي لعشاق السيارات الرياضية."
+    },
+    "4": {
+      "description": "سيارة شيفروليه بولت EV",
+      "price": "$31,995",
+      "range": "259 ميل",
+      "acceleration": "0-60 ميل في الساعة في 6.5 ثانية",
+      "recommendation": "مثالي للمشترين الحريصين على الميزانية."
+    },
+    "5": {
+      "description": "سيارة أودي e-tron GT",
+      "price": "$99,900",
+      "range": "238 ميل",
+      "acceleration": "0-60 ميل في الساعة في 3.1 ثانية",
+      "recommendation": "خيار ممتاز للفخامة والأداء."
+    },
+    "6": {
+      "description": "سيارة ريفان R1T",
+      "price": "$67,500",
+      "range": "314 ميل",
+      "acceleration": "0-60 ميل في الساعة في 3.0 ثانية",
+      "recommendation": "مثالي للسائقين المغامرين."
+    }
+  }
+ 
+}

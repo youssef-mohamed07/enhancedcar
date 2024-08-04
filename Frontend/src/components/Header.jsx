@@ -17,6 +17,7 @@ const Header = () => {
     const newLanguage = language === "en" ? "ar" : "en";
     setLanguage(newLanguage);
     i18n.changeLanguage(newLanguage);
+    localStorage.setItem('language', newLanguage);
   };
 
   const navItems = [
@@ -68,7 +69,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-yellow-700 transition duration-300"
-              onClick={() => navigate("sign-up")}
+              onClick={() => navigate("signup")}
             >
               {t("Sign Up")}
             </motion.button>
@@ -124,7 +125,7 @@ const Header = () => {
             <button
               className="bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-yellow-700 transition duration-300"
               onClick={() => {
-                navigate("sign-up");
+                navigate("signup");
                 setIsMenuOpen(false);
               }}
             >

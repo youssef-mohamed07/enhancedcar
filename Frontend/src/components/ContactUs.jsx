@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhone, FaUser, FaPaperPlane } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const ContactUs = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white-900 to-black flex items-center justify-center p-4" id='contact-us'>
       <motion.section 
@@ -17,7 +20,7 @@ const ContactUs = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          Contact Us
+          {t('contact_us')}
         </motion.h1>
         
         <div className="grid md:grid-cols-2 gap-8">
@@ -26,9 +29,9 @@ const ContactUs = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            <h2 className="text-2xl font-bold mb-4 text-yellow-500">Get in Touch</h2>
+            <h2 className="text-2xl font-bold mb-4 text-yellow-500">{t('get_in_touch')}</h2>
             <p className="text-white-300 mb-4">
-              We'd love to hear from you. Our team is ready to answer all your questions.
+              {t('contact_description')}
             </p>
             <div className="space-y-4">
               <motion.p 
@@ -36,14 +39,14 @@ const ContactUs = () => {
                 whileHover={{ x: 5, color: '#EAB308' }}
               >
                 <FaEnvelope className="w-5 h-5 mr-3 text-yellow-500" />
-                contact@carsalesandrental.com
+                {t('contact_email')}
               </motion.p>
               <motion.p 
                 className="flex items-center text-white-300"
                 whileHover={{ x: 5, color: '#EAB308' }}
               >
                 <FaPhone className="w-5 h-5 mr-3 text-yellow-500" />
-                +1 (123) 456-7890
+                {t('contact_phone')}
               </motion.p>
             </div>
           </motion.div>
@@ -56,34 +59,34 @@ const ContactUs = () => {
           >
             <div>
               <label className="block text-yellow-500 text-sm font-bold mb-2" htmlFor="name">
-                <FaUser className="inline mr-2" />Name
+                <FaUser className="inline mr-2" />{t('name')}
               </label>
               <input 
                 className="w-full px-3 py-2 bg-white-700 text-white border border-yellow-500 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
                 id="name" 
                 type="text" 
-                placeholder="Your name"
+                placeholder={t('your_name')}
               />
             </div>
             <div>
               <label className="block text-yellow-500 text-sm font-bold mb-2" htmlFor="email">
-                <FaEnvelope className="inline mr-2" />Email
+                <FaEnvelope className="inline mr-2" />{t('email')}
               </label>
               <input 
                 className="w-full px-3 py-2 bg-white-700 text-white border border-yellow-500 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
                 id="email" 
                 type="email" 
-                placeholder="Your email"
+                placeholder={t('your_email')}
               />
             </div>
             <div>
               <label className="block text-yellow-500 text-sm font-bold mb-2" htmlFor="message">
-                <FaPaperPlane className="inline mr-2" />Message
+                <FaPaperPlane className="inline mr-2" />{t('message')}
               </label>
               <textarea 
                 className="w-full px-3 py-2 bg-white-700 text-white border border-yellow-500 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
                 id="message" 
-                placeholder="Your message" 
+                placeholder={t('your_message')} 
                 rows="4"
               ></textarea>
             </div>
@@ -94,7 +97,7 @@ const ContactUs = () => {
               type="submit"
             >
               <FaPaperPlane className="mr-2" />
-              Send Message
+              {t('send_message')}
             </motion.button>
           </motion.form>
         </div>

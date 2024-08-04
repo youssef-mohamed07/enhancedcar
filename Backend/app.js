@@ -3,6 +3,7 @@ import { PORT, mongoDBCONNECTION } from "./config.js";
 import mongoose from 'mongoose';
 import user from './models/userModels.js';
 import AuthRoutes from './routes/Auth.js';
+import carRoutes from './routes/carRoutes.js';
 import cookieParser from "cookie-parser";
 import JsonWebTokenError  from "jsonwebtoken";
 import cors from 'cors';
@@ -42,3 +43,5 @@ mongoose
     })
 
 app.use(AuthRoutes);
+app.use(carRoutes);
+

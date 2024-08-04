@@ -1,0 +1,92 @@
+{
+  "Athar Motor Company": "Athar Motor Company",
+  "Car Details": "Car Details",
+  "Car List": "Car List",
+  "mph": "60 mph",
+  "find_your_dream_car": "Find Your Dream Car",
+  "buy_or_rent_car": "Buy or rent the perfect car for your needs with ease and confidence.",
+  "browse_cars": "Browse Cars",
+  "miles": "miles",
+  "About Us": "About Us",
+  "Contact Us": "Contact Us",
+  "Sign Up": "Sign Up",
+  "Login": "Login",
+  "welcome": "Welcome to our application",
+  "about_us": "About Us",
+  "welcome_text": "Welcome to <span class=\"font-semibold text-black\">Car Sales and Rental</span>, your trusted partner in finding the perfect car for your needs. Our mission is to provide a seamless and enjoyable car buying and renting experience.",
+  "our_team": "Our team is dedicated to offering:",
+  "thank_you_text": "Thank you for choosing Car Sales and Rental. We look forward to serving you and helping you find your dream car.",
+  "contact_us": "Contact Us ",
+  "features": {
+    "wide_range": "Wide range of vehicles",
+    "customer_service": "Excellent customer service",
+    "competitive_pricing": "Competitive pricing",
+    "rental_options": "Flexible rental options"
+  },
+  "get_in_touch": "Get in Touch",
+  "contact_description": "We'd love to hear from you. Our team is ready to answer all your questions.",
+  "email": "Email",
+  "phone": "Phone",
+  "name": "Name",
+  "your_name": "Your name",
+  "your_email": "Your email",
+  "message": "Message",
+  "your_message": "Your message",
+  "send_message": "Send Message",
+  "contact_email": "contact@carsalesandrental.com",
+  "contact_phone": "+1 (123) 456-7890",
+
+  "carCard": {
+    "hideDetails": "Hide Details",
+    "buyNow": "Buy Now",
+    "price": "Price",
+    "recommendation": "Recommendation",
+    "contact": "Contact via WhatsApp",
+    "contactMsg": "I'm interested in buying the {{carName}}"
+  },
+  "cars": {
+    "1": {
+      "description": "Tesla Model S",
+      "price": "$79,990",
+      "range": "405 miles",
+      "acceleration": "0-60 mph in 3.1s",
+      "recommendation": "Highly recommended for luxury and performance."
+    },
+    "2": {
+      "description": "Ford Mustang Mach-E",
+      "price": "$45,995",
+      "range": "314 miles",
+      "acceleration": "0-60 mph in 3.5s",
+      "recommendation": "Great balance of style and technology."
+    },
+    "3": {
+      "description": "Porsche Taycan",
+      "price": "$82,700",
+      "range": "227 miles",
+      "acceleration": "0-60 mph in 2.6s",
+      "recommendation": "Perfect for sports car enthusiasts."
+    },
+    "4": {
+      "description": "Chevrolet Bolt EV",
+      "price": "$31,995",
+      "range": "259 miles",
+      "acceleration": "0-60 mph in 6.5s",
+      "recommendation": "Ideal for budget-conscious buyers."
+    },
+    "5": {
+      "description": "Audi e-tron GT",
+      "price": "$99,900",
+      "range": "238 miles",
+      "acceleration": "0-60 mph in 3.1s",
+      "recommendation": "Excellent choice for luxury and performance."
+    },
+    "6": {
+      "description": "Rivian R1T",
+      "price": "$67,500",
+      "range": "314 miles",
+      "acceleration": "0-60 mph in 3.0s",
+      "recommendation": "Perfect for adventurous drivers."
+    }
+    }
+  }
+  

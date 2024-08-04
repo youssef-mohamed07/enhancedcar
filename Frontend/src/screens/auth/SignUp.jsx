@@ -1,27 +1,61 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaUser, FaEnvelope, FaLock, FaPhone, FaGoogle, FaFacebook } from 'react-icons/fa';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
     password: '',
     confirmPassword: '',
     phone: '',
   });
 
+  const [error, setError] = useState('');
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+   try{
+     const response = await axios.post('http://localhost:5000/register', { 
+      email: formData.email,
+      password: formData.password, 
+      confirmPassword: formData.confirmPassword,
+      phone: formData.phone, 
+      name: formData.name,
+    });
+    if (response.data.error){
+      toast.error(response.data.error);
+    }
+    else{
+      setFormData({
+        email: '',
+        password: '',
+        confirmPassword: '',
+        phone: '',
+        name: '',
+      });
+      toast.success('User signed up successfully!');
+      navigate('/login');
+    }
+  }
+  catch(error){
+    setError("missing data")
+    console.error('There was an error logging in:', error);
+    toast.error(error.response.data);
+  }
+    // console.log('Form submitted:', formData);
   };
 
   const inputFields = [
-    { name: 'fullName', type: 'text', placeholder: 'John Doe', icon: FaUser, label: 'Full Name' },
+    { name: 'name', type: 'text', placeholder: 'John Doe', icon: FaUser, label: 'Full Name' },
     { name: 'email', type: 'email', placeholder: 'johndoe@example.com', icon: FaEnvelope, label: 'Email' },
     { name: 'password', type: 'password', placeholder: '********', icon: FaLock, label: 'Password' },
     { name: 'confirmPassword', type: 'password', placeholder: '********', icon: FaLock, label: 'Confirm Password' },

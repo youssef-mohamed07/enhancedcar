@@ -1,13 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCar, FaUserTie, FaMoneyBillWave, FaCalendarAlt } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const AboutUs = () => {
+  const { t } = useTranslation();
   const features = [
-    { text: 'Wide range of vehicles', icon: FaCar },
-    { text: 'Excellent customer service', icon: FaUserTie },
-    { text: 'Competitive pricing', icon: FaMoneyBillWave },
-    { text: 'Flexible rental options', icon: FaCalendarAlt },
+    { text: t('features.wide_range'), icon: FaCar },
+    { text: t('features.customer_service'), icon: FaUserTie },
+    { text: t('features.competitive_pricing'), icon: FaMoneyBillWave },
+    { text: t('features.rental_options'), icon: FaCalendarAlt },
   ];
 
   return (
@@ -31,7 +33,7 @@ const AboutUs = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8, type: "spring", stiffness: 120 }}
         >
-          About Us
+          {t('about_us')}
         </motion.h1>
         
         <div className="space-y-8 relative z-10">
@@ -40,9 +42,8 @@ const AboutUs = () => {
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 1, duration: 0.8 }}
-          >
-            Welcome to <span className="font-semibold text-black">Car Sales and Rental</span>, your trusted partner in finding the perfect car for your needs. Our mission is to provide a seamless and enjoyable car buying and renting experience.
-          </motion.p>
+            dangerouslySetInnerHTML={{ __html: t('welcome_text') }}
+          />
           
           <motion.div 
             className="bg-white p-8 rounded-xl shadow-inner text-yellow-600"
@@ -51,7 +52,7 @@ const AboutUs = () => {
             transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
           >
             <p className="text-2xl font-medium mb-6 text-black">
-              Our team is dedicated to offering:
+              {t('our_team')}
             </p>
             <ul className="space-y-6">
               {features.map((item, index) => (
@@ -82,7 +83,7 @@ const AboutUs = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 2.2, duration: 0.8 }}
           >
-            Thank you for choosing Car Sales and Rental. We look forward to serving you and helping you find your dream car.
+            {t('thank_you_text')}
           </motion.p>
         </div>
         
@@ -93,7 +94,7 @@ const AboutUs = () => {
           transition={{ delay: 2.4, duration: 0.8, type: "spring", stiffness: 120 }}
         >
           <a href="#contact" className="inline-block bg-black text-yellow-500 font-bold text-xl py-4 px-10 rounded-full hover:bg-yellow-500 hover:text-black transition duration-300 transform hover:scale-110 shadow-lg">
-            Contact Us Today
+            {t('contact_us')}
           </a>
         </motion.div>
         

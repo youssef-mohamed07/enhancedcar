@@ -1,23 +1,22 @@
-// src/i18n.js
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import HttpApi from "i18next-http-backend";
-import LanguageDetector from "i18next-browser-languagedetector";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import enTranslation from './locales/en/translation.json';
+import arTranslation from './locales/ar/translation.json';
+
+const storedLanguage = localStorage.getItem('language') || 'en';
 
 i18n
-  .use(HttpApi)
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    supportedLngs: ["en", "ar"],
-    fallbackLng: "en",
-    debug: true,
+    resources: {
+      en: { translation: enTranslation },
+      ar: { translation: arTranslation },
+    },
+    lng: storedLanguage, 
+    fallbackLng: 'en',
     interpolation: {
-      escapeValue: false,
-    },
-    backend: {
-      loadPath: "/locales/{{lng}}/translation.json",
-    },
+      escapeValue: false
+    }
   });
 
 export default i18n;

@@ -41,9 +41,9 @@ const loginUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, phone} = req.body;
 
-        if (!name || !email || !password) {
+        if (!name || !email || !password || !phone) {
             return res.status(400).send('Please provide all data');
         }
 
@@ -57,6 +57,7 @@ const registerUser = async (req, res) => {
         const user = await User.create({
             name,
             email,
+            phone,
             password: hashedPassword,
         });
 

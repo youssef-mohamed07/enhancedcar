@@ -1,20 +1,45 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaGoogle, FaFacebook } from 'react-icons/fa';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+  const [error, setError] = useState(''); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    try {
+      const response = await axios.post('http://localhost:5000/login', { 
+        email: formData.email,
+        password: formData.password, 
+      });
+      if (response.data.error) {
+        toast.error(response.data.error);
+    } else {
+      setFormData({ email: '', password: '' });
+        toast.success('User logged in successfully!');
+        navigate('/');
+    }
+      // console.log('Form submitted:', formData);
+      // console.log('Response:', response.data);
+
+    } catch (error) {
+      setError('Login failed. Please check your credentials.'); 
+      console.error('There was an error logging in:', error);
+      toast.error(error.response.data);
+    }
   };
 
   return (
@@ -85,6 +110,8 @@ const Login = () => {
               />
             </div>
           </motion.div>
+
+          {error && <p className="text-red-500 mb-4">{error}</p>} {/* Added error message rendering */}
 
           <motion.button
             whileHover={{ scale: 1.05 }}

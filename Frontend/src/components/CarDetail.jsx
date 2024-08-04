@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaWhatsapp, FaSearch, FaCar, FaBolt, FaTachometerAlt, FaDollarSign } from 'react-icons/fa';
 import { GiElectric } from 'react-icons/gi';
 import { IoMdClose } from 'react-icons/io';
+import { useTranslation } from 'react-i18next';
 
 
 const cars = [
@@ -12,7 +13,7 @@ const cars = [
     image: 'Tesla Model S.avif',
     description: 'Luxury electric sedan with impressive range and performance.',
     price: '$79,990',
-    range: '405 miles',
+    range: '405 ',
     acceleration: '0-60 mph in 3.1s',
     category: 'Sedan',
   },
@@ -22,7 +23,7 @@ const cars = [
     image: 'Ford Mustang Mach-E.avif',
     description: 'All-electric SUV with Mustang-inspired design and cutting-edge technology.',
     price: '$45,995',
-    range: '314 miles',
+    range: '314 ',
     acceleration: '0-60 mph in 3.5s',
     category: 'SUV',
   },
@@ -32,7 +33,7 @@ const cars = [
     image: 'Porsche Taycan.avif',
     description: 'High-performance electric sports car with stunning design and handling.',
     price: '$82,700',
-    range: '227 miles',
+    range: '227 ',
     acceleration: '0-60 mph in 2.6s',
     category: 'Sports Car',
   },
@@ -42,7 +43,7 @@ const cars = [
     image: 'Chevrolet Bolt EV.avif',
     description: 'Affordable and practical electric hatchback with good range.',
     price: '$31,995',
-    range: '259 miles',
+    range: '259 ',
     acceleration: '0-60 mph in 6.5s',
     category: 'Hatchback',
   },
@@ -52,7 +53,7 @@ const cars = [
     image: 'Audi e-tron GT.avif',
     description: 'Sleek and powerful electric grand tourer with quattro all-wheel drive.',
     price: '$99,900',
-    range: '238 miles',
+    range: '238 ',
     acceleration: '0-60 mph in 3.1s',
     category: 'Sedan',
   },
@@ -62,7 +63,7 @@ const cars = [
     image: 'Rivian R1T.avif',
     description: 'Innovative electric pickup truck with adventure-ready features.',
     price: '$67,500',
-    range: '314 miles',
+    range: '314 ',
     acceleration: '0-60 mph in 3.0s',
     category: 'Pickup',
   },
@@ -70,6 +71,8 @@ const cars = [
 const categories = ['All', 'Sedan', 'SUV', 'Sports Car', 'Hatchback', 'Pickup'];
 
 const CarList = () => {
+  const { t } = useTranslation();
+
   const [selectedCar, setSelectedCar] = useState(null);
   const [category, setCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
@@ -147,7 +150,8 @@ const CarList = () => {
                 </p>
                 <p className="text-sm text-gray-600 flex items-center">
                   <FaBolt className="mr-2" />
-                  {car.range}
+                  {car.range}           {t('miles')}
+
                 </p>
               </div>
             </motion.div>

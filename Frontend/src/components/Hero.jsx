@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
   const controls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.3,
@@ -74,19 +76,19 @@ const Hero = () => {
           variants={itemVariants}
           className="text-5xl font-bold mb-6 leading-tight md:text-7xl text-yellow-500 drop-shadow-lg"
         >
-          Find Your Dream Car
+          {t('find_your_dream_car')}
         </motion.h2>
 
         <motion.p
           variants={itemVariants}
           className="text-lg mb-8 max-w-xl md:text-xl text-white"
         >
-          Buy or rent the perfect car for your needs with ease and confidence.
+          {t('buy_or_rent_car')}
         </motion.p>
 
         <motion.div variants={itemVariants}>
           <button className="bg-yellow-500 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-50">
-            Browse Cars
+            {t('browse_cars')}
           </button>
         </motion.div>
 
@@ -111,10 +113,10 @@ const Hero = () => {
           }}
         >
           <div className="w-full h-full bg-contain bg-center bg-no-repeat"
-               style={{
-                 backgroundImage: 'url("car-silhouette.png")', // Replace with an actual car silhouette image
-                 filter: 'drop-shadow(0 0 15px rgba(255, 255, 0, 0.4))',
-               }}
+            style={{
+              backgroundImage: 'url("car-silhouette.png")', // Replace with an actual car silhouette image
+              filter: 'drop-shadow(0 0 15px rgba(255, 255, 0, 0.4))',
+            }}
           ></div>
         </motion.div>
 

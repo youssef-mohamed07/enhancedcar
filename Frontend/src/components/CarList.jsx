@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaWhatsapp, FaBolt, FaRoad, FaTachometerAlt, FaStar } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const CarCard = ({ car }) => {
+  const { t } = useTranslation();
   const [showDetails, setShowDetails] = useState(false);
 
   return (
@@ -26,30 +28,30 @@ const CarCard = ({ car }) => {
       </div>
       <div className="p-6 bg-black text-yellow-600">
         <h3 className="text-2xl font-bold mb-3">{car.name}</h3>
-        <p className="text-yellow-200 mb-4">{car.description}</p>
+        <p className="text-yellow-200 mb-4">{t(`cars.${car.id}.description`)}</p>
         <div className="flex justify-between items-center mb-4">
           <motion.span 
             className="text-3xl font-extrabold flex items-center"
             whileHover={{ scale: 1.2, rotate: -3 }}
           >
-            <FaBolt className="mr-2" /> {car.price}
+            <FaBolt className="mr-2" /> {t(`cars.${car.id}.price`)}
           </motion.span>
           <motion.span 
             className="bg-yellow-600 text-black px-4 py-2 rounded-full text-sm font-bold flex items-center"
             whileHover={{ scale: 1.1, rotate: 3 }}
-          >
-            <FaRoad className="mr-2" /> {car.range}
+          > 
+            <FaRoad className="mr-2" /> {t(`cars.${car.id}.range`)}
           </motion.span>
         </div>
         <div className="flex items-center justify-between mb-4">
           <span className="text-sm text-yellow-200 flex items-center">
-            <FaTachometerAlt className="mr-2" /> 0-60 mph
+            <FaTachometerAlt className="mr-2" /> {t('mph')} {/* Add translation key */}
           </span>
           <motion.span 
             className="text-sm font-bold"
             whileHover={{ scale: 1.1, x: -5 }}
           >
-            {car.acceleration}
+            {t(`cars.${car.id}.acceleration`)}
           </motion.span>
         </div>
         <motion.button
@@ -58,7 +60,7 @@ const CarCard = ({ car }) => {
           whileTap={{ scale: 0.95 }}
           onClick={() => setShowDetails(!showDetails)}
         >
-          <FaStar className="mr-2" /> {showDetails ? 'Hide Details' : 'Buy Now'}
+          <FaStar className="mr-2" /> {showDetails ? t('carCard.hideDetails') : t('carCard.buyNow')}
         </motion.button>
         {showDetails && (
           <motion.div
@@ -68,16 +70,16 @@ const CarCard = ({ car }) => {
             transition={{ duration: 0.3 }}
             className="mt-4 text-yellow-200"
           >
-            <p className="mb-2">Price: {car.price}</p>
-            <p className="mb-2">Recommendation: {car.recommendation}</p>
+            <p className="mb-2">{t('carCard.price')}: {t(`cars.${car.id}.price`)}</p>
+            <p className="mb-2">{t('carCard.recommendation')}: {t(`cars.${car.id}.recommendation`)}</p>
             <a
-              href={`https://wa.me/1234567890?text=I'm interested in buying the ${car.name}`}
+              href={`https://wa.me/1234567890?text=${encodeURIComponent(t('carCard.contactMsg', { carName: car.name }))}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center bg-green-500 text-white py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-300"
             >
               <FaWhatsapp className="mr-2" />
-              Contact via WhatsApp
+              {t('carCard.contact')}
             </a>
           </motion.div>
         )}
@@ -87,67 +89,38 @@ const CarCard = ({ car }) => {
 };
 
 const CarList = () => {
+  const { t } = useTranslation();
   const cars = [
     {
       id: 1,
       name: 'Tesla Model S',
-      image: 'Tesla Model S.avif',
-      description: 'Luxury electric sedan with impressive range and performance.',
-      price: '$79,990',
-      range: '405 miles',
-      acceleration: '0-60 mph in 3.1s',
-      recommendation: 'Highly recommended for luxury and performance.'
+      image: 'Tesla Model S.avif'
     },
     {
       id: 2,
       name: 'Ford Mustang Mach-E',
-      image: 'Ford Mustang Mach-E.avif',
-      description: 'All-electric SUV with Mustang-inspired design and cutting-edge technology.',
-      price: '$45,995',
-      range: '314 miles',
-      acceleration: '0-60 mph in 3.5s',
-      recommendation: 'Great balance of style and technology.'
+      image: 'Ford Mustang Mach-E.avif'
     },
     {
       id: 3,
       name: 'Porsche Taycan',
-      image: 'Porsche Taycan.avif',
-      description: 'High-performance electric sports car with stunning design and handling.',
-      price: '$82,700',
-      range: '227 miles',
-      acceleration: '0-60 mph in 2.6s',
-      recommendation: 'Perfect for sports car enthusiasts.'
+      image: 'Porsche Taycan.avif'
     },
     {
       id: 4,
       name: 'Chevrolet Bolt EV',
-      image: 'Chevrolet Bolt EV.avif',
-      description: 'Affordable and practical electric hatchback with good range.',
-      price: '$31,995',
-      range: '259 miles',
-      acceleration: '0-60 mph in 6.5s',
-      recommendation: 'Ideal for budget-conscious buyers.'
+      image: 'Chevrolet Bolt EV.avif'
     },
     {
       id: 5,
       name: 'Audi e-tron GT',
-      image: 'Audi e-tron GT.avif',
-      description: 'Sleek and powerful electric grand tourer with quattro all-wheel drive.',
-      price: '$99,900',
-      range: '238 miles',
-      acceleration: '0-60 mph in 3.1s',
-      recommendation: 'Excellent choice for luxury and performance.'
+      image: 'Audi e-tron GT.avif'
     },
     {
       id: 6,
       name: 'Rivian R1T',
-      image: 'Rivian R1T.avif',
-      description: 'Innovative electric pickup truck with adventure-ready features.',
-      price: '$67,500',
-      range: '314 miles',
-      acceleration: '0-60 mph in 3.0s',
-      recommendation: 'Perfect for adventurous drivers.'
-    },
+      image: 'Rivian R1T.avif'
+    }
   ];
 
   return (
@@ -158,7 +131,7 @@ const CarList = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, type: 'spring', bounce: 0.5 }}
       >
-        Electrifying Car Collection
+        {t('carList.title')}
       </motion.h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {cars.map((car) => (
