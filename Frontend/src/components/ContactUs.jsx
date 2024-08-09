@@ -1,109 +1,97 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaUser, FaPaperPlane } from 'react-icons/fa';
-import { useTranslation } from 'react-i18next';
+import { CiMail, CiPhone, CiLocationOn } from "react-icons/ci";
 
-const ContactUs = () => {
-  const { t } = useTranslation();
+export default () => {
+
+  const ContactUs = [
+      {
+          icon:
+          <CiMail className="text-2xl text-yellow-600" />
+          ,
+          contact: "Support@example.com"
+      },
+      {
+          icon:
+          <CiPhone className="text-2xl text-yellow-600" />
+          ,
+          contact: "+1 (555) 000-000"
+      },
+      {
+          icon:
+          <CiLocationOn className="text-2xl text-yellow-600"/>
+          ,
+          contact: "Mountain View, California, United State."
+      },
+  ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white-900 to-black flex items-center justify-center p-4" id='contact-us'>
-      <motion.section 
-        className="bg-white-800 shadow-2xl rounded-lg p-8 max-w-4xl w-full"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <motion.h1 
-          className="text-6xl font-extrabold mb-8 text-center text-yellow-500"
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          {t('contact_us')}
-        </motion.h1>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-          >
-            <h2 className="text-2xl font-bold mb-4 text-yellow-500">{t('get_in_touch')}</h2>
-            <p className="text-white-300 mb-4">
-              {t('contact_description')}
-            </p>
-            <div className="space-y-4">
-              <motion.p 
-                className="flex items-center text-white-300"
-                whileHover={{ x: 5, color: '#EAB308' }}
-              >
-                <FaEnvelope className="w-5 h-5 mr-3 text-yellow-500" />
-                {t('contact_email')}
-              </motion.p>
-              <motion.p 
-                className="flex items-center text-white-300"
-                whileHover={{ x: 5, color: '#EAB308' }}
-              >
-                <FaPhone className="w-5 h-5 mr-3 text-yellow-500" />
-                {t('contact_phone')}
-              </motion.p>
-            </div>
-          </motion.div>
-          
-          <motion.form 
-            className="space-y-4"
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-          >
-            <div>
-              <label className="block text-yellow-500 text-sm font-bold mb-2" htmlFor="name">
-                <FaUser className="inline mr-2" />{t('name')}
-              </label>
-              <input 
-                className="w-full px-3 py-2 bg-white-700 text-white border border-yellow-500 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
-                id="name" 
-                type="text" 
-                placeholder={t('your_name')}
-              />
-            </div>
-            <div>
-              <label className="block text-yellow-500 text-sm font-bold mb-2" htmlFor="email">
-                <FaEnvelope className="inline mr-2" />{t('email')}
-              </label>
-              <input 
-                className="w-full px-3 py-2 bg-white-700 text-white border border-yellow-500 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
-                id="email" 
-                type="email" 
-                placeholder={t('your_email')}
-              />
-            </div>
-            <div>
-              <label className="block text-yellow-500 text-sm font-bold mb-2" htmlFor="message">
-                <FaPaperPlane className="inline mr-2" />{t('message')}
-              </label>
-              <textarea 
-                className="w-full px-3 py-2 bg-white-700 text-white border border-yellow-500 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
-                id="message" 
-                placeholder={t('your_message')} 
-                rows="4"
-              ></textarea>
-            </div>
-            <motion.button 
-              className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded transition duration-200 flex items-center justify-center"
-              whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(234,179,8)" }}
-              whileTap={{ scale: 0.95 }}
-              type="submit"
-            >
-              <FaPaperPlane className="mr-2" />
-              {t('send_message')}
-            </motion.button>
-          </motion.form>
-        </div>
-      </motion.section>
-    </div>
-  );
-};
-
-export default ContactUs;
+      <main className="py-14 bg-gray-200" id="contact-us">
+        <h3 className="text-yellow-600 text-3xl font-semibold sm:text-4xl text-center mb-12"> Contact </h3>
+          <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+              <div className="max-w-lg mx-auto gap-12 justify-between lg:flex lg:max-w-none">
+                  <div className="max-w-lg space-y-3">
+                      
+                      <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+                          Let us know how we can help
+                      </p>
+                      <p>
+                          We’re here to help and answer any question you might have, We look forward to hearing from you! Please fill out the form, or us the contact information bellow .
+                      </p>
+                      <div>
+                          <ul className="mt-6 flex flex-wrap gap-x-10 gap-y-6 items-center">
+                              {
+                                  ContactUs.map((item, idx) => (
+                                      <li key={idx} className="flex items-center gap-x-3">
+                                          <div className="flex-none text-gray-400">
+                                              {item.icon}
+                                          </div>
+                                          <p>{item.contact}</p>
+                                      </li>
+                                  ))
+                              }
+                          </ul>
+                      </div>
+                  </div>
+                  <div className="flex-1 mt-12 sm:max-w-lg lg:max-w-md">
+                      <form
+                          onSubmit={(e) => e.preventDefault()}
+                          className="space-y-5"
+                      >
+                          <div>
+                              <label className="font-medium">
+                                  Full name
+                              </label>
+                              <input
+                                  type="text"
+                                  required
+                                  className="w-full mt-2 px-3 py-2 text-gray-500 bg-white  outline-none border focus:border-yellow-600 shadow-sm rounded-lg"
+                              />
+                          </div>
+                          <div>
+                              <label className="font-medium">
+                                  Email
+                              </label>
+                              <input
+                                  type="email"
+                                  required
+                                  className="w-full mt-2 px-3 py-2 text-gray-500 bg-white outline-none border focus:border-yellow-600 shadow-sm rounded-lg"
+                              />
+                          </div>
+                          
+                          <div>
+                              <label className="font-medium">
+                                  Message
+                              </label>
+                              <textarea required className="w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-white outline-none border focus:border-yellow-600 shadow-sm rounded-lg"></textarea>
+                          </div>
+                          <button
+                              className="w-full px-4 py-2 text-white font-medium bg-yellow-600 hover:bg-yellow-500 active:bg-yellow-600 rounded-lg duration-150"
+                          >
+                              Submit
+                          </button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </main>
+  )
+}

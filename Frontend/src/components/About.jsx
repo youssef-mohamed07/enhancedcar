@@ -1,118 +1,82 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaCar, FaUserTie, FaMoneyBillWave, FaCalendarAlt } from 'react-icons/fa';
-import { useTranslation } from 'react-i18next';
+import { MdOutlineInventory } from "react-icons/md";
+import { CiSearch } from "react-icons/ci";
+import { IoCarSportOutline } from "react-icons/io5";
+import { IoShieldCheckmarkOutline  } from "react-icons/io5";
+import { MdOutlineReviews } from "react-icons/md";
+import { IoTimeOutline } from "react-icons/io5";
 
-const AboutUs = () => {
-  const { t } = useTranslation();
+export default () => {
+
   const features = [
-    { text: t('features.wide_range'), icon: FaCar },
-    { text: t('features.customer_service'), icon: FaUserTie },
-    { text: t('features.competitive_pricing'), icon: FaMoneyBillWave },
-    { text: t('features.rental_options'), icon: FaCalendarAlt },
-  ];
+      {
+          icon:
+          <MdOutlineInventory className="text-3xl text-yellow-600" />,
+          title: "Car Inventory",
+          desc: "A comprehensive listing of all available cars, including detailed information such as make, model, year, price, and specifications."
+      },
+      {
+          icon:
+              <CiSearch className="text-3xl text-yellow-600" /> ,
+          title: "Search and Filter Options",
+          desc: "Allows users to search and filter cars based on various criteria like price range, brand, type, and more."
+      },
+      {
+          icon:
+              <IoCarSportOutline  className="text-3xl text-yellow-600" />,
+          title: "Test Drive",
+          desc: "Clients can experience a  test drive of selected cars."
+      },
+      {
+          icon:
+              <IoShieldCheckmarkOutline className="text-3xl text-yellow-600" />,
+          title: "Insurance Options",
+          desc: "A feature that provides users with information about various car insurance plans and coverage options. Users can compare different insurance providers, get quotes, and even purchase or apply for insurance directly through the website, ensuring they have the right protection for their new vehicle."
+      },
+      {
+          icon:
+              <MdOutlineReviews className="text-3xl text-yellow-600" />,
+          title: "Customer Reviews and Ratings ",
+          desc: "A section where customers can leave reviews and ratings for cars and dealership services."
+      },
+      {
+          icon:
+              <IoTimeOutline className="text-3xl text-yellow-600" />,
+          title: "Appointment Booking",
+          desc: "Enables users to schedule appointments for test drives, maintenance, or consultations directly through the website."
+      },
+  ]
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 overflow-hidden" id='about-us'>
-      <motion.section 
-        className="bg-white rounded-3xl shadow-2xl p-8 max-w-4xl w-full relative"
-        initial={{ opacity: 0, rotateY: -90 }}
-        animate={{ opacity: 1, rotateY: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-      >
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-3xl"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-        />
-        
-        <motion.h1 
-          className="text-6xl font-extrabold mb-8 text-center text-white relative z-10"
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8, type: "spring", stiffness: 120 }}
-        >
-          {t('about_us')}
-        </motion.h1>
-        
-        <div className="space-y-8 relative z-10">
-          <motion.p 
-            className="text-xl text-white leading-relaxed"
-            initial={{ x: -100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            dangerouslySetInnerHTML={{ __html: t('welcome_text') }}
-          />
-          
-          <motion.div 
-            className="bg-white p-8 rounded-xl shadow-inner text-yellow-600"
-            initial={{ rotateX: 90, opacity: 0 }}
-            animate={{ rotateX: 0, opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
-          >
-            <p className="text-2xl font-medium mb-6 text-black">
-              {t('our_team')}
-            </p>
-            <ul className="space-y-6">
-              {features.map((item, index) => (
-                <motion.li 
-                  key={index}
-                  className="flex items-center"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.4 + index * 0.2, duration: 0.5 }}
-                >
-                  <motion.div 
-                    className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mr-4"
-                    initial={{ rotate: -180 }}
-                    animate={{ rotate: 0 }}
-                    transition={{ delay: 1.4 + index * 0.2, duration: 0.5 }}
-                  >
-                    <item.icon className="w-6 h-6 text-white" />
-                  </motion.div>
-                  <span className="text-xl text-gray-800">{item.text}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-          
-          <motion.p 
-            className="text-xl text-white leading-relaxed"
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 2.2, duration: 0.8 }}
-          >
-            {t('thank_you_text')}
-          </motion.p>
-        </div>
-        
-        <motion.div
-          className="mt-12 text-center relative z-10"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 2.4, duration: 0.8, type: "spring", stiffness: 120 }}
-        >
-          <a href="#contact" className="inline-block bg-black text-yellow-500 font-bold text-xl py-4 px-10 rounded-full hover:bg-yellow-500 hover:text-black transition duration-300 transform hover:scale-110 shadow-lg">
-            {t('contact_us')}
-          </a>
-        </motion.div>
-        
-        <motion.div
-          className="absolute -bottom-16 -right-16 w-64 h-64 bg-yellow-300 rounded-full opacity-50"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 2.6, duration: 1, ease: "easeOut" }}
-        />
-        <motion.div
-          className="absolute -top-20 -left-20 w-80 h-80 bg-yellow-300 rounded-full opacity-30"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 2.8, duration: 1, ease: "easeOut" }}
-        />
-      </motion.section>
-    </div>
-  );
-};
-
-export default AboutUs;
+      <section className="py-14" id="features">
+          <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+              <div className="relative max-w-2xl mx-auto sm:text-center">
+                  <div className="relative z-10">
+                      <h3 className="text-yellow-600 text-3xl font-semibold sm:text-4xl">
+                          Features
+                      </h3>
+                  </div>
+                  <div className="absolute inset-0 max-w-xs mx-auto h-44 blur-[118px]" style={{ background: "linear-gradient(152.92deg, rgba(192, 132, 252, 0.2) 4.54%, rgba(232, 121, 249, 0.26) 34.2%, rgba(192, 132, 252, 0.1) 77.55%)" }}></div>
+              </div>
+              <div className="relative mt-12">
+                  <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                      {
+                          features.map((item, idx) => (
+                              <li key={idx} className="bg-white space-y-3 p-4 border rounded-lg">
+                                  <div className=" pb-3">
+                                      {item.icon}
+                                  </div>
+                                  <h4 className="text-lg text-gray-800 font-semibold">
+                                      {item.title}
+                                  </h4>
+                                  <p>
+                                      {item.desc}
+                                  </p>
+                              </li>
+                          ))
+                      }
+                  </ul>
+              </div>
+          </div>
+      </section>
+  )
+}

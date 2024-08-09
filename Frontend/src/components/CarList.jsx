@@ -26,41 +26,36 @@ const CarCard = ({ car }) => {
           </motion.span>
         </div>
       </div>
-      <div className="p-6 bg-black text-yellow-600">
+      <div className="p-6 bg-white text-yellow-600">
         <h3 className="text-2xl font-bold mb-3">{car.name}</h3>
-        <p className="text-yellow-200 mb-4">{t(`cars.${car.id}.description`)}</p>
+        <p className="text-black mb-4">{t(`cars.${car.id}.description`)}</p>
         <div className="flex justify-between items-center mb-4">
           <motion.span 
-            className="text-3xl font-extrabold flex items-center"
-            whileHover={{ scale: 1.2, rotate: -3 }}
+            className="text-md text-black  flex items-center"
           >
-            <FaBolt className="mr-2" /> {t(`cars.${car.id}.price`)}
+            <FaBolt className="mr-2 text-blue-600" /> {t(`cars.${car.id}.price`)}
           </motion.span>
           <motion.span 
-            className="bg-yellow-600 text-black px-4 py-2 rounded-full text-sm font-bold flex items-center"
-            whileHover={{ scale: 1.1, rotate: 3 }}
+            className="bg-gray-200 text-black px-4 py-2 text-sm flex items-center"
           > 
             <FaRoad className="mr-2" /> {t(`cars.${car.id}.range`)}
           </motion.span>
         </div>
         <div className="flex items-center justify-between mb-4">
-          <span className="text-sm text-yellow-200 flex items-center">
-            <FaTachometerAlt className="mr-2" /> {t('mph')} {/* Add translation key */}
+          <span className="text-sm text-gray-800 flex items-center">
+            <FaTachometerAlt className="mr-2 text-gray-800" /> {t('mph')} {/* Add translation key */}
           </span>
           <motion.span 
-            className="text-sm font-bold"
-            whileHover={{ scale: 1.1, x: -5 }}
+            className="text-sm text-gray-800"
           >
             {t(`cars.${car.id}.acceleration`)}
           </motion.span>
         </div>
         <motion.button
-          className="w-full bg-yellow-600 text-black font-bold py-2 px-4 rounded-full hover:bg-yellow-300 transition-colors duration-300 flex items-center justify-center"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          className="w-full bg-gray-200 text-black py-2 px-4  hover:bg-gray-300 transition-colors duration-300 flex items-center justify-center"
           onClick={() => setShowDetails(!showDetails)}
         >
-          <FaStar className="mr-2" /> {showDetails ? t('carCard.hideDetails') : t('carCard.buyNow')}
+          <FaStar className="mr-2 text-yellow-600" /> {showDetails ? t('carCard.hideDetails') : t('carCard.buyNow')}
         </motion.button>
         {showDetails && (
           <motion.div
@@ -68,10 +63,10 @@ const CarCard = ({ car }) => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="mt-4 text-yellow-200"
+            className="mt-4 text-black"
           >
             <p className="mb-2">{t('carCard.price')}: {t(`cars.${car.id}.price`)}</p>
-            <p className="mb-2">{t('carCard.recommendation')}: {t(`cars.${car.id}.recommendation`)}</p>
+            <p className="mb-6">{t('carCard.recommendation')}: {t(`cars.${car.id}.recommendation`)}</p>
             <a
               href={`https://wa.me/1234567890?text=${encodeURIComponent(t('carCard.contactMsg', { carName: car.name }))}`}
               target="_blank"

@@ -38,7 +38,7 @@ mongoose
         });
         console.log("connected to db");    
     })
-    .catch(()=> {
+    .catch((error)=> {
         console.log(error);
     })
 

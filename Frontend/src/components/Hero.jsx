@@ -44,11 +44,19 @@ const Hero = () => {
   return (
     <section
       ref={ref}
-      className="relative bg-cover bg-center bg-no-repeat h-screen overflow-hidden"
-      style={{
-        backgroundImage: 'url("aa.webp")',
-      }}
+      className="relative h-screen overflow-hidden"
     >
+      {/* Video background */}
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute top-0 left-0 w-full h-full object-cover"
+      >
+        <source src="hero_video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+  
       {/* Animated background overlay */}
       <motion.div
         className="absolute inset-0"
@@ -64,7 +72,7 @@ const Hero = () => {
           repeatType: 'reverse',
         }}
       ></motion.div>
-
+  
       {/* Content */}
       <motion.div
         variants={containerVariants}
@@ -72,26 +80,29 @@ const Hero = () => {
         animate={controls}
         className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center"
       >
+        {/* Rest of the content remains unchanged */}
         <motion.h2
           variants={itemVariants}
-          className="text-5xl font-bold mb-6 leading-tight md:text-7xl text-yellow-500 drop-shadow-lg"
+          className="text-5xl font-bold mb-6 leading-tight md:text-7xl text-white drop-shadow-lg"
         >
           {t('find_your_dream_car')}
         </motion.h2>
-
+  
         <motion.p
           variants={itemVariants}
           className="text-lg mb-8 max-w-xl md:text-xl text-white"
         >
           {t('buy_or_rent_car')}
         </motion.p>
-
+  
         <motion.div variants={itemVariants}>
-          <button className="bg-yellow-500 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-50">
+          <button onClick={() => {
+            document.getElementById('car-list').scrollIntoView({ behavior: 'smooth' });
+          }} className="bg-transparent border-2 border-yellow-600 text-yellow-600 px-4 py-1 font-semibold hover:bg-yellow-600 hover:text-white transition duration-300">
             {t('browse_cars')}
           </button>
         </motion.div>
-
+  
         {/* 3D floating car model */}
         <motion.div
           className="absolute bottom-10 right-10 w-64 h-36 hidden lg:block"
@@ -119,7 +130,7 @@ const Hero = () => {
             }}
           ></div>
         </motion.div>
-
+  
         {/* Animated lines */}
         {[...Array(5)].map((_, i) => (
           <motion.div
@@ -141,7 +152,7 @@ const Hero = () => {
             }}
           />
         ))}
-
+  
         {/* Pulsating circles */}
         {[...Array(3)].map((_, i) => (
           <motion.div
