@@ -48,7 +48,7 @@ export default () => {
 
   return (
       <section className="py-14" id="features">
-          <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+          <div className="max-w-[1200px] mx-auto px-4 text-gray-600 md:px-8">
               <div className="relative max-w-2xl mx-auto sm:text-center">
                   <div className="relative z-10">
                       <h3 className="text-yellow-600 text-3xl font-semibold sm:text-4xl">

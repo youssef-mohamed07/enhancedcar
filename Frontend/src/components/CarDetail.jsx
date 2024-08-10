@@ -114,7 +114,7 @@ const CarList = () => {
 
   return (
     <div className=" bg-gray-100 p-8" id='car-list'>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1200px] mx-auto">
         <motion.h1 
           className="text-[3.2rem] md:text-[2.9rem]   
           text-center text-yellow-600 mb-8 flex 

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
+import './css/Hero.css'
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -82,25 +83,52 @@ const Hero = () => {
       >
         {/* Rest of the content remains unchanged */}
         <motion.h2
-          variants={itemVariants}
-          className="text-5xl font-bold mb-6 leading-tight md:text-7xl text-white drop-shadow-lg"
-        >
-          {t('find_your_dream_car')}
-        </motion.h2>
+  variants={itemVariants}
+  className="
+    font-bold 
+    leading-tight 
+    text-white 
+    drop-shadow-lg 
+    mb-4 
+    lg:mb-6
+    hero-heading
+    text-center
+  "
+>
+  {t('find_your_dream_car')}
+</motion.h2>
+
   
-        <motion.p
-          variants={itemVariants}
-          className="text-lg mb-8 max-w-xl md:text-xl text-white"
-        >
-          {t('buy_or_rent_car')}
-        </motion.p>
+<motion.p
+  variants={itemVariants}
+  className="
+    text-base 
+    mb-4    
+    hero-subtitle
+    text-white
+  "
+>
+  {t('buy_or_rent_car')}
+</motion.p>
+
   
         <motion.div variants={itemVariants}>
-          <button onClick={() => {
-            document.getElementById('car-list').scrollIntoView({ behavior: 'smooth' });
-          }} className="bg-transparent border-2 border-yellow-600 text-yellow-600 px-4 py-1 font-semibold hover:bg-yellow-600 hover:text-white transition duration-300">
-            {t('browse_cars')}
-          </button>
+        <button
+  onClick={() => {
+    document.getElementById('car-list').scrollIntoView({ behavior: 'smooth' });
+  }}
+  className="
+    bg-transparent border-2
+    border-none rounded-[9px] text-white px-7 py-6 mt-6
+    font-semibold  bg-yellow-600 hover:bg-yellow-700 
+    hover:text-white transition duration-300
+    w-full max-w-full hero-button
+  "
+
+  style={{ }}
+>
+  {t('browse_cars')}
+</button>
         </motion.div>
   
         {/* 3D floating car model */}

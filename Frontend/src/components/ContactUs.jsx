@@ -26,7 +26,7 @@ export default () => {
   return (
       <main className="py-14 bg-gray-200" id="contact-us">
         <h3 className="text-yellow-600 text-3xl font-semibold sm:text-4xl text-center mb-12"> Contact </h3>
-          <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+          <div className="max-w-[1200px] mx-auto px-4 text-gray-600 md:px-8">
               <div className="max-w-lg mx-auto gap-12 justify-between lg:flex lg:max-w-none">
                   <div className="max-w-lg space-y-3">
                       

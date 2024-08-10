@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <header className="bg-white text-gray-900 font-semibold shadow-lg">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto max-w-[1200px] px-4">
         <div className="flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
